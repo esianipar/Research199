@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 #pil (python image library)
 
 
-#V.1.2
+#V.2.0
 #TIF to RAW is a script that extracts the raw data within a TIF or TIFF file
 #   and outputs it as a 2D numpy array. The values output correlate to stored
 #   variable within the .TIF file, and this can be verified using ArcGIS.
@@ -189,7 +189,11 @@ def prompt_user():
     print(" ")    
     return func
     
-def switch(selection, arrayList):
+def switch(selection, arrayListArr):
+    
+    #assigns arrayList to be the last element of array (loading data)
+    arrayList = arrayListArr[-1]
+    
     #calls appropriate function based on user input 
     if selection == 1:
         arrayList.display_arrays()
@@ -202,13 +206,12 @@ def switch(selection, arrayList):
     elif selection == 5: 
         save_data(arrayList)
     elif selection == 6: 
-        arrayList = load_data()
-        print(arrayList.SkinTemperatureHash)
+        arrayListArr.append(load_data())
     elif selection == 7:
         export_data(arrayList)
     
-    #allows changes to arrayList in main
-    return arrayList
+    #allows changes to arrayListArr in main
+    return arrayListArr
        
 def tif_to_raw(arrayList, option):
     
@@ -419,21 +422,21 @@ def export_data(arrayListObject: ArrayList):
 
 
 ### end functions ###
-
-
+  
 
 ### main ###
-arrayList = ArrayList()
+arrayListArr = []
+arrayListArr.append(ArrayList())
 
 print("\nBooting up .TIF to Raw...")
 selection = 1
 while selection != 0:
     
-    arrayList.calculationArray.clear() 
+    arrayListArr[-1].calculationArray.clear() 
     selection = prompt_user()    
     
-    switch(selection, arrayList)
+    arrayListArr = switch(selection, arrayListArr)
     
 print("\nThank you for using .TIF to Raw!\n")
-### end main ###       
+### end main ###          
 
