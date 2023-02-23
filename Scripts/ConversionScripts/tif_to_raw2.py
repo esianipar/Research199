@@ -46,6 +46,43 @@ class ArrayList:
         
         #calculation arrays
         self.calculationArray = []
+
+    def get_temperature2mHash(self):
+        return self.temperature2mHash
+
+    def get_SkinTemperatureHash(self):
+        return self.SkinTemperatureHash
+
+    def get_snowfallHash(self):
+        return self.snowfallHash
+
+    def get_snowDepthHash(self):
+        return self.snowDepthHash
+
+    def get_windU10mHash(self):
+        return self.windU10mHash
+
+    def get_windV10mHash(self):
+        return self.windV10mHash
+
+    def get_surfacePressureHash(self):
+        return self.get_surfacePressureHash()
+
+    def get_totalPrecipitationHash(self):
+        return self.totalPrecipitationHash
+
+    def get_surfaceLatentHeatFluxHash(self):
+        return self.surfaceLatentHeatFluxHash
+
+    def get_surfaceNetSolarRadiationHash(self):
+        return self.surfaceNetSolarRadiationHash
+
+    def get_surfaceNetThermalRadiationHash(self):
+        return self.surfaceNetThermalRadiationHash
+
+    
+
+
     
     def add_array(self, array, option):
         #Adds an array to a chosen hash
