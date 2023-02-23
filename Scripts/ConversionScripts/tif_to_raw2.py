@@ -80,7 +80,7 @@ class ArrayList:
     def get_surfaceNetThermalRadiationHash(self):
         return self.surfaceNetThermalRadiationHash
 
-    
+
 
 
     
