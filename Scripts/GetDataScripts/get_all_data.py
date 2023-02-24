@@ -2,6 +2,7 @@ import cdsapi
 import requests
 import numpy as np
 from datetime import datetime
+import os, zipfile
 #V.1.0
 #get_all_data is a script that preforms HTML get requests to a series 
 #   of webpages, each with a section of the data necessary for 
@@ -12,6 +13,24 @@ from datetime import datetime
 #   leap years. Incorrect tabs will remain open, and must be closed
 #   manually.
 # Written by Nico Platt
+
+#Tools for better access by Noel Sianipar
+
+def unzip_files(dir_name:str):
+    #dir_name = 'C:\\SomeDirectory'
+    extension = [".zip", ".gz"]
+    os.chdir(dir_name) # change directory from working dir to dir with files
+
+    for item in os.listdir(dir_name): # loop through items in dir
+        for ext in extension:
+            if item.endswith(ext): # check for ".zip" extension
+                file_name = os.path.abspath(item) # get full path of files
+                zip_ref = zipfile.ZipFile(file_name) # create zipfile object
+                zip_ref.extractall(dir_name) # extract file to dir
+                zip_ref.close() # close file
+                os.remove(file_name) # delete zipped file
+
+
 
 
 ###------------------------Functions------------------------###
