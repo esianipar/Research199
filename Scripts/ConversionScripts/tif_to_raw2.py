@@ -446,9 +446,9 @@ def export_data(arrayListObject: ArrayList):
         if not callable(getattr(arrayListObject, attributes)) and not attributes.startswith("__"):
             print(attributes)
       
-            x = attributes
-            print(arrayListObject.SkinTemperatureHash.get('hello'))
-            total_hash_map[attributes] = arrayListObject.x
+            new = "get_" + str(attributes)
+            #print(arrayListObject.SkinTemperatureHash.get('hello'))
+            total_hash_map[attributes] = arrayListObject.get_totalPrecipitationHash()
     
     print(total_hash_map)
 

@@ -1,11 +1,14 @@
-import zipfile
-from tkinter import Tk     # from tkinter import Tk for Python 3.x
-from tkinter.filedialog import *
+import os, zipfile
 
-#path_to_zip_file = input("Input path files you wish to extract.\nYou will also be asked to input a directory to extract to.")
-Tk().withdraw()
-fileName = askopenfilenames(filetypes=[("Tif files", "*.tif"), ("Tif files", "*.tiff"), ("All Files", "*.*")])
-directy_to_extract_to = input("Now please input directory to extract to.")
+dir_name = 'C:\\SomeDirectory'
+extension = ".zip"
 
-with zipfile.ZipFile(path_to_zip_file, 'r') as zip_ref:
-    zip_ref.extractall(directory_to_extract_to)
+os.chdir(dir_name) # change directory from working dir to dir with files
+
+for item in os.listdir(dir_name): # loop through items in dir
+    if item.endswith(extension): # check for ".zip" extension
+        file_name = os.path.abspath(item) # get full path of files
+        zip_ref = zipfile.ZipFile(file_name) # create zipfile object
+        zip_ref.extractall(dir_name) # extract file to dir
+        zip_ref.close() # close file
+        os.remove(file_name) # delete zipped file
